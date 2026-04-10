@@ -7,10 +7,12 @@ beforeEach(() => {
 });
 
 describe("GET /health", () => {
-  it("should return status ok", async () => {
+  it("should return status ok with version info", async () => {
     const res = await request(app).get("/health");
     expect(res.statusCode).toBe(200);
     expect(res.body.status).toBe("ok");
+    expect(res.body.version).toBe("1.0.0");
+    expect(res.body.service).toBe("task-manager-api");
   });
 });
 
