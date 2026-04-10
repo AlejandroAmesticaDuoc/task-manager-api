@@ -7,7 +7,12 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.get("/health", (req, res) => {
-  res.json({ status: "ok", timestamp: new Date().toISOString() });
+  res.json({
+    status: "ok",
+    version: "1.0.0",
+    service: "task-manager-api",
+    timestamp: new Date().toISOString(),
+  });
 });
 
 app.use("/api/tasks", taskRoutes);
