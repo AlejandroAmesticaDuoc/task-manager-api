@@ -179,6 +179,7 @@ Ejemplo: `1.0.0` → `1.1.0` (feature nueva) → `1.1.1` (fix)
 Se usó **Claude (Anthropic)** como apoyo para:
 - Apoyo con la redacción de documentación del README
 - Ayuda en la configuración de GitHub Actions
+- Ayuda con los titulos y descripciones en los PR y demas
 
 Las decisiones técnicas (elección de GitFlow, convenciones, estructura) fueron tomadas y revisadas por el equipo. Todo el contenido generado con IA fue validado antes de incluirse.
 
