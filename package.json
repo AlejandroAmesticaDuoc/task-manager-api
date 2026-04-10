@@ -1,0 +1,28 @@
+{
+  "name": "task-manager-api",
+  "version": "1.0.0",
+  "description": "Microservicio REST para gestion de tareas",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "node --watch src/app.js",
+    "test": "jest --verbose",
+    "lint": "eslint src/ tests/"
+  },
+  "keywords": [
+    "microservice",
+    "rest",
+    "api",
+    "tasks"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^10.2.0",
+    "jest": "^30.3.0",
+    "supertest": "^7.2.2"
+  }
+}
