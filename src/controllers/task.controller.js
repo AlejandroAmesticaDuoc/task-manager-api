@@ -1,7 +1,11 @@
 const TaskModel = require("../models/task.model");
 
 const getAllTasks = (req, res) => {
-  const tasks = TaskModel.getAll();
+  let tasks = TaskModel.getAll();
+  const { status } = req.query;
+  if (status) {
+    tasks = tasks.filter((task) => task.status === status);
+  }
   res.json({ success: true, data: tasks });
 };
 
