@@ -1,7 +1,11 @@
 const TaskModel = require("../models/task.model");
 
 const getAllTasks = (req, res) => {
-  const tasks = TaskModel.getAll();
+  let tasks = TaskModel.getAll();
+  const { status } = req.query;
+  if (status) {
+    tasks = tasks.filter((task) => task.status === status);
+  }
   res.json({ success: true, data: tasks });
 };
 
@@ -40,10 +44,19 @@ const deleteTask = (req, res) => {
   res.json({ success: true, message: "Task deleted" });
 };
 
+const getTaskCount = (req, res) => {
+  const tasks = TaskModel.getAll();
+  const total = tasks.length;
+  const pending = tasks.filter((t) => t.status === "pending").length;
+  const completed = tasks.filter((t) => t.status === "completed").length;
+  res.json({ success: true, data: { total, pending, completed } });
+};
+
 module.exports = {
   getAllTasks,
   getTaskById,
   createTask,
   updateTask,
   deleteTask,
+  getTaskCount,
 };
