@@ -54,6 +54,19 @@ describe("GET /api/tasks", () => {
   });
 });
 
+describe("GET /api/tasks/count", () => {
+  it("should return task count summary", async () => {
+    await request(app).post("/api/tasks").send({ title: "T1", status: "pending" });
+    await request(app).post("/api/tasks").send({ title: "T2", status: "completed" });
+    await request(app).post("/api/tasks").send({ title: "T3", status: "pending" });
+    const res = await request(app).get("/api/tasks/count");
+    expect(res.statusCode).toBe(200);
+    expect(res.body.data.total).toBe(3);
+    expect(res.body.data.pending).toBe(2);
+    expect(res.body.data.completed).toBe(1);
+  });
+});
+
 describe("GET /api/tasks/:id", () => {
   it("should return a task by id", async () => {
     await request(app).post("/api/tasks").send({ title: "Find me" });
